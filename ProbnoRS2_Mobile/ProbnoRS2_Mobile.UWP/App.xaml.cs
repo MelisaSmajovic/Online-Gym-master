@@ -28,6 +28,7 @@ namespace ProbnoRS2_Mobile.UWP
         /// </summary>
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjc3NDIyQDMxMzgyZTMxMmUzMEUvYmh4QWZtWndrTmdyVFZsRXord1h5R0xrR25mc3dyR01KRk9BbVBWQ0E9");
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
