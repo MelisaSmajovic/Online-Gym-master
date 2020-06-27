@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                 xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+                xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+                    xmlns:converters="clr-namespace:ProbnoRS2_Mobile.Converters;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.ClanTeretanePage">
+    <ContentPage.BindingContext>
+        <vm:ClanTeretaneVM></vm:ClanTeretaneVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView RowHeight="140" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="20,20,20,20" HasUnevenRows="False" ItemsSource="{Binding TeretaneList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="10" Padding="1" Margin="0,5,0,5" BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                <Frame CornerRadius="10" Padding="5"  BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                    <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="FillAndExpand">
+
+
+
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Naziv}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Adresa}" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <rating:SfRating  x:Name="rating" Value="{Binding ProsjecnaOcjena}" ReadOnly="True" ItemCount="5" Precision="Exact" ItemSize="15" />
+                                                <Button BackgroundColor="#3897F0" x:Name="DodajRecenziju" HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="165" FontSize="13" TextColor="White" Text="Dodaj komentar i ocjenu" Clicked="DodajRecenziju_Clicked" BindingContext="{Binding TeretanaId}"></Button>
+                                                <Button BackgroundColor="#3897F0" x:Name="PregledClanarina" HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="160" FontSize="13" TextColor="White" Text="Prikaži plaćene članarine" Clicked="PregledClanarina_Clicked" BindingContext="{Binding TeretanaId}"></Button>
+
+
+                                            </StackLayout>
+
+
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </Frame>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

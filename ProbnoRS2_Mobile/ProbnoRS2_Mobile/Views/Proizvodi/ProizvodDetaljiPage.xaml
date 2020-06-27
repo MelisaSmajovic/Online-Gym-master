@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.ProizvodDetaljiPage"
+                 xmlns:converters="clr-namespace:ProbnoRS2_Mobile.Converters;assembly=ProbnoRS2_Mobile"
+              xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" >
+    <ContentPage.BindingContext>
+        <vm:ProizvodDetaljiVM></vm:ProizvodDetaljiVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10"
+                xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="380"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" HorizontalOptions="FillAndExpand" CornerRadius="10" Padding="1" Margin="10,10,10,10"  BackgroundColor="White"  BorderColor="#3897F0" HeightRequest="350">
+                <Frame CornerRadius="10" Padding="5"  BackgroundColor="White" BorderColor="#3897F0" HeightRequest="340">
+                    <StackLayout Margin="10,10,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="150" HeightRequest="150" Source="{Binding Proizvod.Slika, Converter={StaticResource imgConv}}" />
+                            <StackLayout HorizontalOptions="StartAndExpand" Margin="2,2,2,2">
+                                <Label Text="{Binding Proizvod.Naziv}"     Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="20" ></Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Cijena: " Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="15"></Label>
+                                    <Label Text="{Binding Proizvod.Cijena, StringFormat=' {0} KM'}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Prosječna ocjena: " Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="15">
+                                    </Label>
+                                    <rating:SfRating  x:Name="rating" Value="{Binding Proizvod.ProsjecnaOcjena}" ReadOnly="True" ItemCount="5" Precision="Exact" ItemSize="15" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <Label Margin="0,8,0,0" Text="{Binding Proizvod.Opis}"></Label>
+
+                          
+
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <ScrollView Margin="1,-19,1,1" Grid.Row="1" Orientation="Vertical" VerticalScrollBarVisibility="Always" >
+                <StackLayout>
+                    <StackLayout>
+                        <StackLayout  Orientation="Vertical" HeightRequest="100" Margin="2,-4,2,-2">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Recenzije proizvoda: " FontFamily="{StaticResource LatoBold}" FontSize="20" Margin="20,20,0,0" />
+                            </StackLayout>
+                            <CollectionView HorizontalScrollBarVisibility="Always" ItemsLayout="HorizontalList" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding RecenzijeList}" VerticalScrollBarVisibility="Never">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Padding="5,2,2,2">
+                                            <custom:PancakeView Padding="2,1,1,1" HeightRequest="70" WidthRequest="135" CornerRadius="12" >
+                                                <Grid>
+                                                    <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                                    <StackLayout Spacing="0" VerticalOptions="StartAndExpand">
+                                                        <Label Margin="2,2,2,2" FontSize="16" FontFamily="{StaticResource LatoBold}" TextColor="Black" Text="{Binding Komentar}" HorizontalOptions="CenterAndExpand"/>
+                                                        <rating:SfRating x:Name="rating" Grid.Row="1" Grid.Column="3" ItemCount="5" Value="{Binding Ocjena}" Precision="Exact" HorizontalOptions="CenterAndExpand" ItemSize="17" ReadOnly="true"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </custom:PancakeView>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout  Orientation="Vertical" WidthRequest="250" HeightRequest="240" Margin="2,-4,2,-2">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Slični proizvodi: " FontFamily="{StaticResource LatoBold}" FontSize="20" Margin="20,20,20,0" />
+                            </StackLayout>
+                            <CollectionView ItemsLayout="HorizontalList" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding PreporuceniProizvodiList}" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Always">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Padding="5,5,5,5" >
+                                            <Label FontSize="16" FontFamily="{StaticResource LatoBold}" TextColor="Black" Text="{Binding Naziv}" HorizontalOptions="CenterAndExpand" />
+                                            <rating:SfRating x:Name="rating" Grid.Row="1" Grid.Column="3" ItemCount="5" Value="{Binding ProsjecnaOcjena}" HorizontalOptions="CenterAndExpand" Precision="Exact" ItemSize="17" ReadOnly="true"/>
+                                            <custom:PancakeView HeightRequest="98" Padding="2,2,2,2" WidthRequest="138" CornerRadius="12" BorderColor="#3897F0" BorderThickness="1">
+                                                <Grid>
+                                                  
+                                                    <Image Source="{Binding Slika, Converter={StaticResource imgConv}}" />
+                                                    <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    
+                                                </Grid>
+                                            </custom:PancakeView>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

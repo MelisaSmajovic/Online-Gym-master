@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"             
+              prism:ViewModelLocator.AutowireViewModel="True"
+   xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProbnoRS2_Mobile.Views.Uplate.UplataClanarinePage">
+    <ContentPage.BindingContext>
+        <vm:StripePlacanjeVM></vm:StripePlacanjeVM>
+    </ContentPage.BindingContext>
+    <NavigationPage.TitleView>
+        <Grid HorizontalOptions="FillAndExpand">
+            <Image Source="HeaderLogo" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"  Margin="-60,0,0,0"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentView>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="Center"  Padding="20,20,20,0" ColumnSpacing="20">
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Label Text="Odaberi teretanu:" FontSize="18" Grid.Row="1" VerticalTextAlignment="Center" />
+                <Picker WidthRequest="200" ItemsSource="{Binding teretaneList}" Grid.Row="2" SelectedItem="{Binding SelectedTeretana}" ItemDisplayBinding="{Binding Teretana.Naziv}"></Picker>
+
+
+                <Label Text="Odaberi tip članarine:" FontSize="18" Grid.Row="3" VerticalTextAlignment="Center" />
+                <Picker WidthRequest="200" ItemsSource="{Binding tipoviClanarineList}" Grid.Row="4" SelectedItem="{Binding SelectedTip}" ItemDisplayBinding="{Binding Tip}"></Picker>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                    <Entry x:Name="CardNumber" Placeholder="  Enter card  number"  Text="{Binding KreditnaKartica.Broj}"  ReturnType="Next" 
+                                      Completed="CardNumber_Completed"  TextChanged="CardNumber_TextChanged" Keyboard="Keyboard.Numeric"/>
+                    <Label x:Name="ErrorLabel_CardNumber"  IsVisible="{Binding IsError_CardNumber}" TextColor="Red" FontSize="13" />
+                </StackLayout>
+
+
+                <StackLayout  Grid.Row="2" Grid.Column="0">
+                    <Entry x:Name="Month" Placeholder="  MM" Text="{Binding ExpMonth}"  ReturnType="Next" Keyboard="Keyboard.Numeric"
+                                      Completed="Month_Completed" TextChanged="Month_TextChanged"/>
+                    <Label x:Name="ErrorLabel_Month"  IsVisible="{Binding IsError_Month}"  TextColor="Red" FontSize="13"/>
+                </StackLayout>
+
+                <StackLayout  Grid.Row="2" Grid.Column="1">
+                    <Entry x:Name="Year" Placeholder="  YY"  Text="{Binding ExpYear}"   ReturnType="Next"
+                                      Completed="Year_Completed" TextChanged="Year_TextChanged" Keyboard="Keyboard.Numeric"/>
+                    <Label x:Name="ErrorLabel_Year" Text="Godina može biti prazna!" IsVisible="{Binding IsError_Year}"  TextColor="Red" FontSize="13"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="2">
+                    <Entry x:Name="Cvv" Placeholder="  Cvv code" Text="{Binding KreditnaKartica.Cvc}"  ReturnType="Next" 
+                                      Completed="Cvv_Completed" TextChanged="Cvv_TextChanged" Keyboard="Keyboard.Numeric"/>
+                    <Label x:Name="ErrorLabel_Cvv" Text="CVV morate unijeti!" IsVisible="{Binding IsError_Cvv}" TextColor="Red" FontSize="13" />
+                </StackLayout>
+
+            </Grid>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" >
+                <Button Margin="5,5,5,5" CornerRadius="5"  Text="Plati" BackgroundColor="#3897F0" TextColor="White" HeightRequest="40" WidthRequest="200" HorizontalOptions="CenterAndExpand" x:Name="Submit_Button" BorderRadius="0"  Command="{Binding SubmitCommandClanarine}" VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

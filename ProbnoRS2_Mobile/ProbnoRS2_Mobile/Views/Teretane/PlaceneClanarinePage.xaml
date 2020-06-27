@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.PlaceneClanarinePage">
+    <ContentPage.BindingContext>
+        <vm:PlaceneClanarineVM></vm:PlaceneClanarineVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <Label Text="Placene clanarine za teretanu: "
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="labNaziv"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding ClanarineList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Tip članarine: " LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16"></Label>
+                                        <Label Text="{Binding TipClanarine.Tip}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="16" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Ukupan iznos: "  LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="13"></Label>
+                                        <Label Text="{Binding UkupanIznos, StringFormat=' {0} KM'}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Datum uplate: "   LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="13"></Label>
+                                        <Label Text="{Binding DatumUplate,StringFormat='{0:dd.MM.yyyy}'}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    </StackLayout>
+                                    
+                             
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button BindingContext="{Binding TeretanaId}" Clicked="Uplata_Clicked" x:Name="btnUplata" Margin="5,5,5,5" CornerRadius="5"  Text="Dodaj novu uplatu" BackgroundColor="#3897F0" TextColor="White" HeightRequest="50" WidthRequest="200" HorizontalOptions="CenterAndExpand"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

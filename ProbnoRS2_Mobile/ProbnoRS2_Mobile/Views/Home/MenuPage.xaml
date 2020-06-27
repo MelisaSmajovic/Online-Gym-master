@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProbnoRS2_Mobile.Views.MenuPage"
+             Title="Menu">
+    <StackLayout VerticalOptions="FillAndExpand">
+        <ListView x:Name="ListViewMenu"
+                    HasUnevenRows="True" BackgroundColor="White" VerticalScrollBarVisibility="Never">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10"  Margin="0,10,0,0">
+                            <StackLayout Orientation="Horizontal">
+                             
+                                <Label Text="{Binding Icon}"  HeightRequest="15" TextColor="#3897F0" FontSize="29" Margin="10,0,5,0">
+                                    <Label.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" WinPhone="Assets/fa-regular-400.ttf#Font Awesome 5 Free" />
+                                    </Label.FontFamily>
+                                </Label>
+                                <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+      
+</ContentPage>

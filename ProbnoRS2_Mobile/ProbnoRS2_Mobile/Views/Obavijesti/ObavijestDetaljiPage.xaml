@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.ObavijestDetaljiPage">
+    <ContentPage.BindingContext>
+        <vm:ObavijestDetaljiVM></vm:ObavijestDetaljiVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Frame VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="10" Padding="1" Margin="15,25,15,15"  BackgroundColor="White" BorderColor="#3897F0">
+            <StackLayout Margin="15,15,15,15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand">
+                    <Label Text="Datum objave: "     Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="12"></Label>
+                    <Label Text="{Binding Obavijest.DatumObjave,StringFormat='{0:dd.MM.yyyy}'}"     Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="12"></Label>
+                </StackLayout>
+
+                <Label Text="{Binding Obavijest.Naziv}"     Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="20" ></Label>
+                <Label Text="{Binding Obavijest.Sadrzaj}"     Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="17" ></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="10,12,0,0">
+                    <Label Text="Da li Vam se ova objava sviđa? "     Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="12" Margin="0,15,0,0"></Label>
+                    <Button Margin="0,0,-5,-5"  x:Name="btnLike" Text="&#xf164;" HeightRequest="25" BackgroundColor="White" FontSize="20" Clicked="Like_Clicked">
+                        <Button.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String" WinPhone="Assets/fa-regular-400.ttf#Font Awesome 5 Free" />
+                        </Button.FontFamily>
+                    </Button>
+                    <Button Margin="0,0,-5,-5" x:Name="btnDislike" Text="&#xf165;" HeightRequest="25" BackgroundColor="White"  FontSize="20" Clicked="Dislike_Clicked">
+                        <Button.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String" WinPhone="Assets/fa-regular-400.ttf#Font Awesome 5 Free" />
+                        </Button.FontFamily>
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

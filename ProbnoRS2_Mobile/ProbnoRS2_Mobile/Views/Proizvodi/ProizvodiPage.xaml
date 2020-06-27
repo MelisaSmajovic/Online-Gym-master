@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+              xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             xmlns:converters="clr-namespace:ProbnoRS2_Mobile.Converters;assembly=ProbnoRS2_Mobile"
+             xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="ProbnoRS2_Mobile.Views.ProizvodiPage">
+    <ContentPage.BindingContext>
+        <vm:ProizvodiVM></vm:ProizvodiVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="500"></RowDefinition>
+                </Grid.RowDefinitions>
+                <custom:PancakeView CornerRadius="0,0,20,20" IsClippedToBounds="true" HeightRequest="50" Grid.Row="0">
+                    <Grid BackgroundColor="#96d1ff" HorizontalOptions="FillAndExpand" Padding="10,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Margin="20,0,0,0" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Margin="-15,0,0,0"  Source="LogoFitness.PNG" HeightRequest="100" WidthRequest="100" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Image>
+                        </StackLayout>
+                    </Grid>
+                </custom:PancakeView>
+                <Grid Grid.Row="1" HeightRequest="50" BackgroundColor="White" WidthRequest="600" HorizontalOptions="StartAndExpand">
+                    <SearchBar Margin="30,0,0,0" HorizontalOptions="Start" Grid.Row="1" x:Name="Naziv" Placeholder="Traži proizvod..." Text="{Binding NazivProizvoda}" SearchButtonPressed="PretragaPoNazivu_Clicked" WidthRequest="200"/>
+                    <Picker HeightRequest="40" Grid.Row="1" Margin="275,-22,30,0" HorizontalOptions="Start" ItemsSource="{Binding KategorijeProizvodaList}" SelectedItem="{Binding SelectedKategorijaProizvoda}" ItemDisplayBinding="{Binding Naziv}" WidthRequest="200"></Picker>
+                </Grid>
+                <Grid  Margin="35,0,0,0" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox  CheckedChanged="CheckBox_Changed" x:Name="Check_Ishrana" Margin="0,20,0,0" IsChecked="{Binding SelectedIshrana}" Color="#3897F0"></CheckBox>
+                        <Label Margin="0,26,0,0" Text="Plan ishrane" TextColor="Gray"></Label>
+                        <CheckBox CheckedChanged="CheckBox_Changed" x:Name="Check_Plan"  Margin="10,20,0,0" Color="#3897F0" IsChecked="{Binding SelectedTrening}"></CheckBox>
+                        <Label Margin="0,26,0,0"  Text="Plan treninga" TextColor="Gray"></Label>
+                    </StackLayout>
+                </Grid>
+                <ListView Grid.Row="3" HorizontalOptions="FillAndExpand" RowHeight="140" VerticalScrollBarVisibility="Never" Margin="20,20,20,20" HasUnevenRows="False" ItemsSource="{Binding ProizvodiList}"  ItemSelected="ListView_OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame CornerRadius="10" Padding="1" Margin="0,5,0,5" BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                    <Frame CornerRadius="10" Padding="5"  BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                        <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <Image Source="{Binding Slika, Converter={StaticResource imgConv}}" HeightRequest="100" WidthRequest="200"></Image>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{Binding Naziv}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                                <Label Text="{Binding Cijena, StringFormat=' {0} KM'}" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                                <StackLayout Orientation="Horizontal">
+                                                    <rating:SfRating  x:Name="rating" Value="{Binding ProsjecnaOcjena}" ReadOnly="True" ItemCount="5" Precision="Exact" ItemSize="15" />
+                                                    <Button BindingContext="{Binding ProizvodId}" CornerRadius="5" Clicked="Dodaj_Clicked" HorizontalOptions="EndAndExpand" FontSize="13" TextColor="White" x:Name="Dodaj" BackgroundColor="#3897F0"  Text="Dodaj u košaricu" HeightRequest="40" WidthRequest="120"></Button>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

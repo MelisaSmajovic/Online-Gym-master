@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.ClanarinePage">
+    <ContentPage.BindingContext>
+        <vm:ClanarineVM></vm:ClanarineVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Margin="20,20,20,20">
+            <Picker WidthRequest="200" Margin="0,5,0,0" ItemsSource="{Binding teretaneList}" SelectedItem="{Binding SelectedTeretana}" ItemDisplayBinding="{Binding Teretana.Naziv}"></Picker>
+            <ListView ItemsSource="{Binding ClanarineList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Tip članarine: " LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="13"></Label>
+                                        <Label Text="{Binding TipClanarine.Tip}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="16" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Ukupan iznos: " LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="13"></Label>
+                                        <Label Text="{Binding UkupanIznos, StringFormat=' {0} KM'}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Datum uplate: " LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="13"></Label>
+                                        <Label Text="{Binding DatumUplate,StringFormat='{0:dd.MM.yyyy}'}"
+                                                LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13"></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Teretana: " LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="13"></Label>
+                                        <Label Text="{Binding Teretana.Naziv}"
+                                                LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

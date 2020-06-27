@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67D94705-3059-4DA5-8D0C-D75077B5E1B9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OnlineGym_Desktop</RootNamespace>
+    <AssemblyName>OnlineGym_Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Extensions.Microsoft.DependencyInjection, Version=0.0.0.0, Culture=neutral, PublicKeyToken=e767ac9c89543656, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Extensions.Microsoft.DependencyInjection.6.0.0\lib\netstandard2.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl, Version=2.8.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.2.8.2\lib\net40\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.Http.2.4.2\lib\net46\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Stripe, Version=1.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.1.12.0\lib\net40\Stripe.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIService.cs" />
+    <Compile Include="Clanovi\frmClanDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clanovi\frmClanDetalji.Designer.cs">
+      <DependentUpon>frmClanDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clanovi\frmClanoviIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clanovi\frmClanoviIndex.Designer.cs">
+      <DependentUpon>frmClanoviIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dsPro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPro.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsUplataa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUplataa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ds_TeretaneReport2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_TeretaneReport2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Login.designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalKorisnik.cs" />
+    <Compile Include="Helper\UIHelper.cs" />
+    <Compile Include="Izvjestaji\frm_ProizvodiIzvjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\frm_ProizvodiIzvjestaj.Designer.cs">
+      <DependentUpon>frm_ProizvodiIzvjestaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjestaji\frm_TeretaneIzvjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\frm_TeretaneIzvjestaj.Designer.cs">
+      <DependentUpon>frm_TeretaneIzvjestaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjestaji\frm_TeretaneUplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\frm_TeretaneUplate.Designer.cs">
+      <DependentUpon>frm_TeretaneUplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frmKorisnikDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frmKorisnikDodaj.Designer.cs">
+      <DependentUpon>frmKorisnikDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frmMojProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frmMojProfil.Designer.cs">
+      <DependentUpon>frmMojProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frmUrediProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frmUrediProfil.Designer.cs">
+      <DependentUpon>frmUrediProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frm_Korisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frm_Korisnici.Designer.cs">
+      <DependentUpon>frm_Korisnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frm_KorisnikDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frm_KorisnikDetalji.Designer.cs">
+      <DependentUpon>frm_KorisnikDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\frmMainMenadzer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\frmMainMenadzer.Designer.cs">
+      <DependentUpon>frmMainMenadzer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\frmPocetna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\frmPocetna.Designer.cs">
+      <DependentUpon>frmPocetna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Narudzbe\frmNarudzbeDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Narudzbe\frmNarudzbeDetalji.Designer.cs">
+      <DependentUpon>frmNarudzbeDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Narudzbe\frmNarudzbeIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Narudzbe\frmNarudzbeIndex.Designer.cs">
+      <DependentUpon>frmNarudzbeIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Proizvodi\frmProizvodDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proizvodi\frmProizvodDodaj.Designer.cs">
+      <DependentUpon>frmProizvodDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proizvodi\frmProizvodiIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proizvodi\frmProizvodiIndex.Designer.cs">
+      <DependentUpon>frmProizvodiIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proizvodi\frmProizvodUredi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proizvodi\frmProizvodUredi.Designer.cs">
+      <DependentUpon>frmProizvodUredi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Teretane\frmDodajTeretanu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teretane\frmDodajTeretanu.Designer.cs">
+      <DependentUpon>frmDodajTeretanu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teretane\frmTeretanaUredi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teretane\frmTeretanaUredi.Designer.cs">
+      <DependentUpon>frmTeretanaUredi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teretane\frmTeretaneIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teretane\frmTeretaneIndex.Designer.cs">
+      <DependentUpon>frmTeretaneIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teretane\frmTeretaneUplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teretane\frmTeretaneUplate.Designer.cs">
+      <DependentUpon>frmTeretaneUplate.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Clanovi\frmClanDetalji.resx">
+      <DependentUpon>frmClanDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clanovi\frmClanovi.resx" />
+    <EmbeddedResource Include="Clanovi\frmClanoviIndex.resx">
+      <DependentUpon>frmClanoviIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\frm_ProizvodiIzvjestaj.resx">
+      <DependentUpon>frm_ProizvodiIzvjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\frm_TeretaneIzvjestaj.resx">
+      <DependentUpon>frm_TeretaneIzvjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\frm_TeretaneUplate.resx">
+      <DependentUpon>frm_TeretaneUplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\rptTeretanaUplate.rdlc" />
+    <EmbeddedResource Include="Izvjestaji\rptTeretane.rdlc" />
+    <EmbeddedResource Include="Izvjestaji\rpt_Proizvodi.rdlc" />
+    <EmbeddedResource Include="Korisnici\frmKorisnikDodaj.resx">
+      <DependentUpon>frmKorisnikDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnici\frmMojProfil.resx">
+      <DependentUpon>frmMojProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnici\frmUrediProfil.resx">
+      <DependentUpon>frmUrediProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnici\frm_Korisnici.resx">
+      <DependentUpon>frm_Korisnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnici\frm_KorisnikDetalji.resx">
+      <DependentUpon>frm_KorisnikDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\frmMainMenadzer.resx">
+      <DependentUpon>frmMainMenadzer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\frmPocetna.resx">
+      <DependentUpon>frmPocetna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Narudzbe\frmNarudzbeDetalji.resx">
+      <DependentUpon>frmNarudzbeDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Narudzbe\frmNarudzbeIndex.resx">
+      <DependentUpon>frmNarudzbeIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proizvodi\frmProizvodDodaj.resx">
+      <DependentUpon>frmProizvodDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proizvodi\frmProizvodiIndex.resx">
+      <DependentUpon>frmProizvodiIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proizvodi\frmProizvodUredi.resx">
+      <DependentUpon>frmProizvodUredi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Teretane\frmDodajTeretanu.resx">
+      <DependentUpon>frmDodajTeretanu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teretane\frmTeretanaUredi.resx">
+      <DependentUpon>frmTeretanaUredi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teretane\frmTeretaneIndex.resx">
+      <DependentUpon>frmTeretaneIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teretane\frmTeretaneUplate.resx">
+      <DependentUpon>frmTeretaneUplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="dsPro.xsc">
+      <DependentUpon>dsPro.xsd</DependentUpon>
+    </None>
+    <None Include="dsPro.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPro.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPro.xss">
+      <DependentUpon>dsPro.xsd</DependentUpon>
+    </None>
+    <None Include="dsUplataa.xsc">
+      <DependentUpon>dsUplataa.xsd</DependentUpon>
+    </None>
+    <None Include="dsUplataa.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUplataa.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsUplataa.xss">
+      <DependentUpon>dsUplataa.xsd</DependentUpon>
+    </None>
+    <None Include="ds_TeretaneReport2.xsc">
+      <DependentUpon>ds_TeretaneReport2.xsd</DependentUpon>
+    </None>
+    <None Include="ds_TeretaneReport2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_TeretaneReport2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ds_TeretaneReport2.xss">
+      <DependentUpon>ds_TeretaneReport2.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineGym_Model\OnlineGym_Model.csproj">
+      <Project>{90C2F76B-F888-4885-8806-F4452C5AA331}</Project>
+      <Name>OnlineGym_Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

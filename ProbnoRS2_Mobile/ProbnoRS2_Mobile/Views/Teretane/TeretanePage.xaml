@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+               xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             xmlns:converters="clr-namespace:ProbnoRS2_Mobile.Converters;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.TeretanePage">
+    <ContentPage.BindingContext>
+        <vm:TeretaneVM></vm:TeretaneVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="500"></RowDefinition>
+                </Grid.RowDefinitions>
+                <custom:PancakeView CornerRadius="0,0,20,20" IsClippedToBounds="true" HeightRequest="50" Grid.Row="0">
+                    <Grid BackgroundColor="#96d1ff" HorizontalOptions="FillAndExpand" Padding="10,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Margin="20,0,0,0" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image  Source="LogoFitness.PNG" HeightRequest="100" WidthRequest="100" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Image>
+                        </StackLayout>
+                    </Grid>
+                </custom:PancakeView>
+                <Grid Grid.Row="1" HeightRequest="50" BackgroundColor="White" WidthRequest="600" HorizontalOptions="StartAndExpand">
+                    <SearchBar  Margin="30,0,0,0" HorizontalOptions="Start" Grid.Row="1" x:Name="Naziv" Placeholder="Traži teretanu..." Text="{Binding NazivTeretane}" SearchButtonPressed="PretragaPoNazivu_Clicked" WidthRequest="200"/>
+                    <Picker Margin="275,-22,30,0" Grid.Row="1" HorizontalOptions="Start" ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGrad}" ItemDisplayBinding="{Binding Naziv}" WidthRequest="200"></Picker>
+                </Grid>
+                <ListView Grid.Row="2" RowHeight="140" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="20,20,20,20" HasUnevenRows="False" ItemsSource="{Binding TeretaneList}"  ItemSelected="ListView_OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame CornerRadius="10" Padding="1" Margin="0,5,0,5" BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                    <Frame CornerRadius="10" Padding="5"  BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                        <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <Image Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}"></Image>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{Binding Naziv}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Adresa}" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                                    <Label Text=", " 
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                                    <Label Text="{Binding Grad.Naziv}" 
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <rating:SfRating  x:Name="rating" Value="{Binding ProsjecnaOcjena}" ReadOnly="True" ItemCount="5" Precision="Exact" ItemSize="15" />
+                                                    <Button Margin="220,0,0,0" CornerRadius="5" BackgroundColor="#3897F0" HorizontalOptions="EndAndExpand" TextColor="White" HeightRequest="40" WidthRequest="100" FontSize="13" x:Name="UclaniSe"  Text="Učlani se" Clicked="UclaniSe_Clicked" BindingContext="{Binding TeretanaId}"></Button>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

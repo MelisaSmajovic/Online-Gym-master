@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.UclanjivanjePage">
+    <ContentPage.Content>
+
+        <Frame VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="10" Padding="1" Margin="15,25,15,15"  BackgroundColor="White" BorderColor="#3897F0">
+            <StackLayout Margin="15,15,15,15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+                    <Label Margin="0,15,0,0" Text="Odaberi tip članarine: "     Style="{DynamicResource ListItemDetailTextStyle}" 
+                                           FontSize="12" ></Label>
+                    <Picker WidthRequest="200" Margin="0,-15,0,0"  ItemsSource="{Binding tipoviClanarineList}" SelectedItem="{Binding SelectedTip}" ItemDisplayBinding="{Binding Tip}"></Picker>
+
+                </StackLayout>
+                <Button x:Name="Uclani"  Text="Učlani se" Clicked="Uclani_Clicked" Margin="0,2,0,0" HeightRequest="40" BackgroundColor="#3897F0" TextColor="White"  >
+                </Button>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

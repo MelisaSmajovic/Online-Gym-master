@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+               xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             x:Class="ProbnoRS2_Mobile.Views.RecenzijaTeretanePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand"
+                     Margin="10" >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+
+                        <RowDefinition Height="*"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition  Width="*"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Label Text="Ocjena:    " FontSize="18"  VerticalTextAlignment="Center" />
+                        <rating:SfRating x:Name="rating" ItemCount="5" ItemSize="20" />
+
+                    </StackLayout>
+
+                    <Editor Placeholder="Vaš komentar" x:Name="inputKomentar"  HorizontalOptions="CenterAndExpand" Grid.Row="2" WidthRequest="400"  HeightRequest="150"></Editor>
+
+
+
+                    <Button x:Name="btnSacuvajRecenziju" WidthRequest="80" Margin="300,0,0,0" HorizontalOptions="CenterAndExpand"   BackgroundColor="#3897F0" TextColor="White" HeightRequest="50" Text="Sačuvaj" Clicked="btnSacuvajRecenziju_Clicked" Grid.Row="3" ></Button>
+
+                  
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels"
+             x:Class="ProbnoRS2_Mobile.ViewModels.NarudzbaPage">
+    <ContentPage.BindingContext>
+        <vm:NarudzbaVM></vm:NarudzbaVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView RowHeight="140" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="20,0,20,20" HasUnevenRows="False"  ItemsSource="{Binding StavkeList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="10" Padding="1" Margin="0,5,0,5" BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                <Frame CornerRadius="10" Padding="5"  BackgroundColor="White" BorderColor="#3897F0" HeightRequest="130">
+                                    <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+             
+                                        <StackLayout Orientation="Vertical">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Proizvod: " 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+
+                                                <Label Text="{Binding Proizvod.Naziv}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Količina: " 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                                <Label Text="{Binding Kolicina, StringFormat=' {0} kom.'}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Cijena: " 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                                <Label Text="{Binding Proizvod.Cijena, StringFormat=' {0} KM'}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                                <Button Margin="50,5,5,5" x:Name="btnUkloni" Clicked="btnUkloni_Clicked" BindingContext="{Binding NarudzbeStavkeId}"  CornerRadius="5"  Text="Ukloni iz košarice" BackgroundColor="#3897F0" TextColor="White" HeightRequest="40" WidthRequest="200" VerticalOptions="End" HorizontalOptions="EndAndExpand"></Button>
+                                            </StackLayout>
+                                           
+                                         
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </Frame>
+                            </Frame>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="btnPlati" Clicked="btnPlati_Clicked" BindingContext="{Binding NarudzbaId}" Margin="5,5,5,5" CornerRadius="5"  Text="Plati" BackgroundColor="#3897F0" TextColor="White" HeightRequest="40" WidthRequest="200" HorizontalOptions="CenterAndExpand"></Button>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

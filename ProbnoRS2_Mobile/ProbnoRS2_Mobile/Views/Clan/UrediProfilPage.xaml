@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                  xmlns:vm="clr-namespace:ProbnoRS2_Mobile.ViewModels;assembly=ProbnoRS2_Mobile"
+             x:Class="ProbnoRS2_Mobile.Views.UrediProfilPage">
+    <ContentPage.BindingContext>
+        <vm:ProfilVM></vm:ProfilVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout  Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,0" >
+            </StackLayout>
+            <Grid Grid.Row="1" Margin="20,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="1" FontSize="16"  Text="Korisničko ime: "></Label>
+                <Entry Grid.Row="2" x:Name="inputKorisnickoIme" Text="{Binding LogiraniClan.KorisnickoIme}" Placeholder="{Binding LogiraniClan.KorisnickoIme}" PlaceholderColor="#bababa" FontSize="16" Margin="0,0,0,5"></Entry>
+
+                <Label Grid.Row="3" FontSize="16"  Text="Email: "></Label>
+                <Entry  x:Name="inputEmail" Text="{Binding LogiraniClan.Email}" Grid.Row="4" Placeholder="{Binding LogiraniClan.Email}" PlaceholderColor="#bababa" FontSize="16"  Margin="0,0,0,5"></Entry>
+              
+                <Entry x:Name="inputStaraLozinka"  IsPassword="True" Grid.Row="5" Placeholder="Stara lozinka" PlaceholderColor="#bababa" FontSize="16"  Margin="0,0,0,5"></Entry>
+
+                <Entry  x:Name="inputLozinka" IsPassword="True" Grid.Row="6" Placeholder="Nova lozinka" PlaceholderColor="#bababa" FontSize="16"  Margin="0,0,0,5"></Entry>
+              
+                <Entry x:Name="inputLozinkaPotvrda"  IsPassword="True" Grid.Row="7" Placeholder="Potvrda lozinke" PlaceholderColor="#bababa" FontSize="16"  Margin="0,0,0,5"></Entry>
+
+
+                <Button CornerRadius="5" x:Name="btnUrediProfil" Text="Sačuvaj" BackgroundColor="#3897F0" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="8" Clicked="btnUrediProfil_Clicked"></Button>
+                <Label Grid.Row="9" x:Name="errorLabel" FontSize="20" TextColor="Red"></Label>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

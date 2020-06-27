@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProbnoRS2_Mobile.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+                <On Platform="iOS" Value="FontAwesome5Free-Regular" />
+                <On Platform="Android" Value="fa-regular.otf#Regular" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+                <On Platform="iOS" Value="FontAwesome5Free-Solid" />
+                <On Platform="Android" Value="fa-solid.otf#Solid" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="LatoBlack">
+                <On Platform="iOS" Value="Lato-Black" />
+                <On Platform="Android" Value="Lato-Black.ttf#Regular" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="LatoBold">
+                <On Platform="iOS" Value="Lato-Bold" />
+                <On Platform="Android" Value="Lato-Bold.ttf#Bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="LatoRegular">
+                <On Platform="iOS" Value="Lato-Regular" />
+                <On Platform="Android" Value="Lato-Regular.ttf#Regular" />
+            </OnPlatform>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style x:Key="stlLeftStripe" TargetType="CollectionView">
+                <Setter Property="WidthRequest"    Value = "110"     />
+                <Setter Property="BackgroundColor" Value = "White" />
+            </Style>
+
+            <Style x:Key="stlRigthStripeFrame" TargetType="Frame">
+                <Setter Property="Margin"          Value = "0,20"   />
+                <Setter Property="BackgroundColor" Value = "#96d1ff" />
+                <Setter Property="CornerRadius"    Value = "25"     />
+                <Setter Property="HeightRequest"   Value = "240"    />
+                <Setter Property="HasShadow"       Value = "False"  />
+            </Style>
+
+            <Style x:Key="stlRigthStripeImg" TargetType="Image">
+                <Setter Property="TranslationY"    Value = "-35"     />
+                <Setter Property="TranslationX"    Value = "35"      />
+                <Setter Property="VerticalOptions" Value = "Start"    />
+                <Setter Property="HorizontalOptions" Value = "End"    />
+                <Setter Property="WidthRequest"    Value = "120"      />
+            </Style>
+
+            <Style x:Key="stlRigthStripeTitle" TargetType="Label">
+                <Setter Property="FontSize"        Value = "21"       />
+                <Setter Property="TextColor"       Value = "White"    />
+                <Setter Property="FontAttributes"  Value = "Bold"     />
+                <Setter Property="Margin"          Value = "0,0,0,25" />
+            </Style>
+
+            <Style x:Key="stlRigthStripeDesc" TargetType="Label">
+                <Setter Property="FontSize"        Value = "15"       />
+                <Setter Property="TextColor"       Value = "White"    />
+            </Style>
+
+            <Style x:Key="stlRigthStripeBtn" TargetType="Button">
+                <Setter Property="WidthRequest"    Value = "20"    />
+                <Setter Property="HeightRequest"   Value = "20"    />
+                <Setter Property="CornerRadius"    Value = "10"    />
+                <Setter Property="BackgroundColor" Value = "White" />
+                <Setter Property="TextColor"       Value = "#f13b4f" />
+                <Setter Property="HorizontalOptions" Value = "End" />
+            </Style>
+
+            <Style x:Key="stlPopularFoodFrame" TargetType="Frame">
+                <Setter Property="HeightRequest"   Value = "50"    />
+                <Setter Property="HorizontalOptions" Value = "Start" />
+                <Setter Property="HasShadow"        Value = "False"     />
+                <Setter Property="CornerRadius"     Value = "20"  />
+            </Style>
+
+            <Style x:Key="stlPopularFoodDesc" TargetType="Label">
+                <Setter Property="FontAttributes"   Value = "Bold"    />
+                <Setter Property="Margin"           Value = "10,10,0,0"/>
+            </Style>
+
+            <Style x:Key="stlPopularFoodDta" TargetType="Label">
+                <Setter Property="TextColor"        Value = "Silver"    />
+                <Setter Property="Margin"           Value = "10,0,0,0"/>
+            </Style>
+
+
+
+            <Style x:Key="icons" TargetType="Label">
+                <Setter Property="Text"   Value = "&#xf11a;"    />
+            </Style>
+       
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
