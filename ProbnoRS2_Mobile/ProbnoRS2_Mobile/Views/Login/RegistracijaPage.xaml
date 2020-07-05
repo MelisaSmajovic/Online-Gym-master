@@ -50,16 +50,7 @@
 
                 <Label Grid.Row="9" x:Name="errorLabel" FontSize="20" TextColor="Red"></Label>
                 <Label  HorizontalOptions="Center"  Margin="0,10,0,0" FontSize="12" Grid.Row="10">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Već imate svoj korisnički račun?"/>
-                            <Span TextColor="#2687ee" Text=" Prijavite se" FontSize="12" FontFamily="{StaticResource LatoBold}">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="LoginButton_Clicked"/>
-                                </Span.GestureRecognizers>
-                            </Span>
-                        </FormattedString>
-                    </Label.FormattedText>
+                 
                 </Label>
             </Grid>
         </Grid>
