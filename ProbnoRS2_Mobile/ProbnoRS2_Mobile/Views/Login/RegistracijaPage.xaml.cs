@@ -29,10 +29,7 @@ namespace ProbnoRS2_Mobile.Views
             base.OnAppearing();
             await model.Init();
         }
-        private async void LoginButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new LoginPage());
-        }
+   
 
         private async void GradPicker_Changed(object sender, EventArgs e)
         {
@@ -96,48 +93,41 @@ namespace ProbnoRS2_Mobile.Views
                 return false;
             }
 
-            if (inputKorisnickoIme.Text == "")
+            if (inputKorisnickoIme.Text == null)
             {
                 errorLabel.Text = "Unesite korisničko ime!";
                 return false;
             }
-            if (inputIme.Text == "")
+            if (inputIme.Text == null)
             {
                 errorLabel.Text = "Unesite ime!";
                 return false;
             }
-            if (!Regex.IsMatch(inputIme.Text, @"^[\p{L}]+$"))
-            {
-                //kad ne unesem ime uopste, ovdje mi padne na regexu kaze ne moze bizi null inputime.text ???:o
-                errorLabel.Text = "Ime smije sadržavati samo slova!";
-                return false;
-            }
-            if (inputPrezime.Text == "")
+     
+            if (inputPrezime.Text == null)
             {
                 errorLabel.Text = "Unesite prezime!";
                 return false;
             }
-            if (!Regex.IsMatch(inputPrezime.Text, @"^[\p{L}]+$"))
-            {
-                errorLabel.Text = "Prezime smije sadržavati samo slova!";
-                return false;
-            }
-            if (inputEmail.Text == "")
+        
+            if (inputEmail.Text == null)
             {
                 errorLabel.Text = "Unesite e-mail!";
                 return false;
             }
+             if (inputEmail.Text != null)
+            {
             if (!Regex.IsMatch(inputEmail.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 errorLabel.Text = "E-mail adresa nije u ispravnom formatu!";
                 return false;
-            }
-            if (inputLozinka.Text == "")
+            }}
+            if (inputLozinka.Text == null)
             {
                 errorLabel.Text = "Unesite lozinku!";
                 return false;
             }
-            if (inputLozinkaPotvrda.Text == "")
+            if (inputLozinkaPotvrda.Text == null)
             {
                 errorLabel.Text = "Unesite potvrdu lozinke!";
                 return false;
